@@ -1,20 +1,31 @@
-// The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
 const functions = require("firebase-functions");
 
-// The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require("firebase-admin");
 admin.initializeApp();
+const { Translate } = require("@google-cloud/translate").v2;
+// const translate = new Translate{}
 
-// Take the text parameter passed to this HTTP endpoint and insert it into the
-// Realtime Database under the path /messages/:pushId/original
-exports.addMessage = functions.https.onRequest(async (req, res) => {
-  // Grab the text parameter.
-  const original = req.query.text;
-  // Push the new message into the Realtime Database using the Firebase Admin SDK.
-  const snapshot = await admin
+exports.getArticles = functions.https.onRequest(async (req, res) => {
+  const language = req.query.language;
+  const kommun = req.query.kommun;
+  const topic = req.query.topic;
+
+  const data = await admin
     .database()
-    .ref("/messages")
-    .push({ original: original });
-  // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-  res.redirect(303, snapshot.ref.toString());
+    .ref(`/kommun/${kommun}`)
+    .once(
+      "value",
+      async (data) => {
+        data.fullTranslated = await translate.translate(data.fullVersion, {
+          from: "se",
+          to: language,
+        });
+        return data;
+      },
+      (errorObject) => {
+        console.log("The read failed: " + errorObject.code);
+      }
+    );
+
+  res.send(data);
 });

@@ -10,8 +10,17 @@ class NewsFeed extends Component {
         <Container className="mb-5">
           <h2>{this.props.title}</h2>
         </Container>
-
-        <Article />
+        {this.props.articles.map((article) => {
+          return (
+            <div
+              key={article.id}
+              onClick={() => this.props.setArticle(article)}
+              className="mb-3"
+            >
+              <Article article={article} />
+            </div>
+          );
+        })}
       </div>
     );
   }

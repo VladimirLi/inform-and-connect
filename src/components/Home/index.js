@@ -24,7 +24,7 @@ class Home extends Component {
         </Container>
         <Row>
           <Col sm={8}>
-            <NewsFeed title="News and Updates" />
+            <NewsFeed title="News and Updates" {...props} />
           </Col>
           <Col sm={4}>
             <UsefulContacts contacts={this.state.contacts} />

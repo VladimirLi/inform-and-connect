@@ -10,7 +10,7 @@ function Landing(props) {
       <PreferenceMenu {...props} renderTopic={false} />
       <HelpWith {...props} />
       <hr />
-      <NewsFeed title="Breaking News:" />
+      <NewsFeed title="Breaking News:" {...props} />
     </Container>
   );
 }

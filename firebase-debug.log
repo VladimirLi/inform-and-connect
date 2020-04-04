@@ -1,0 +1,53 @@
+[debug] [2020-04-04T21:53:26.362Z] ----------------------------------------------------------------------
+[debug] [2020-04-04T21:53:26.363Z] Command:       /usr/bin/node /usr/bin/firebase emulators:start
+[debug] [2020-04-04T21:53:26.363Z] CLI Version:   8.0.1
+[debug] [2020-04-04T21:53:26.364Z] Platform:      linux
+[debug] [2020-04-04T21:53:26.364Z] Node Version:  v13.11.0
+[debug] [2020-04-04T21:53:26.364Z] Time:          Sat Apr 04 2020 23:53:26 GMT+0200 (Central European Summer Time)
+[debug] [2020-04-04T21:53:26.364Z] ----------------------------------------------------------------------
+[debug] [2020-04-04T21:53:26.364Z] 
+[debug] [2020-04-04T21:53:26.368Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-04T21:53:26.368Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions, hosting
+[debug] [2020-04-04T21:53:26.389Z] [hub] writing locator at /tmp/hub-inform-and-connect.json
+[info] ✔  hub: emulator hub started at http://localhost:4400
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "13"
+[info] ✔  functions: functions emulator started at http://localhost:5001
+[debug] [2020-04-04T21:53:26.412Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/inform-and-connect/webApps/-/config  
+ 
+[debug] [2020-04-04T21:53:27.333Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 04 Apr 2020 21:53:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting: Serving hosting files from: build
+[info] ✔  hosting: Local server: http://localhost:5000
+[info] ✔  hosting: hosting emulator started at http://localhost:5000
+[info] i  functions: Watching "/home/vladimir/workspace/inform-and-connect/functions" for Cloud Functions...
+[debug] [2020-04-04T21:53:27.384Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-04T21:53:27.385Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 
+[debug] [2020-04-04T21:53:27.385Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-04T21:53:27.385Z] [worker-~diagnostic~-7b470900-b6d5-43c6-a6be-2ca735f884c9]: Assigning socketPath: /tmp/fire_emu_24446.sock 
+[debug] [2020-04-04T21:53:27.385Z] [worker-~diagnostic~-7b470900-b6d5-43c6-a6be-2ca735f884c9]: BUSY 
+[debug] [2020-04-04T21:53:27.545Z] [runtime-status] [24446] Functions runtime initialized. {"cwd":"/home/vladimir/workspace/inform-and-connect/functions","node_version":"13.11.0"} 
+[debug] [2020-04-04T21:53:27.546Z] [runtime-status] [24446] Disabled runtime features: undefined 
+[debug] [2020-04-04T21:53:27.547Z] [runtime-status] [24446] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/home/vladimir/workspace/inform-and-connect/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-04T21:53:27.548Z] [runtime-status] [24446] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/home/vladimir/workspace/inform-and-connect/functions/node_modules/firebase-functions/lib/index.js"} 
+[warn] ⚠  functions: Your GOOGLE_APPLICATION_CREDENTIALS environment variable points to /home/vladimir/inform-and-connect-6d05ea09f2b2.json. Non-emulated services will access production using these credentials. Be careful!
+[debug] [2020-04-04T21:53:27.550Z] [runtime-status] [24446] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-04T21:53:27.571Z] [runtime-status] [24446] Checked functions.config() {"config":{}} 
+[debug] [2020-04-04T21:53:27.571Z] [runtime-status] [24446] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/home/vladimir/workspace/inform-and-connect/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-04T21:53:27.572Z] [runtime-status] [24446] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/home/vladimir/workspace/inform-and-connect/functions/node_modules/firebase-admin/lib/index.js"} 
+[debug] [2020-04-04T21:53:27.572Z] [runtime-status] [24446] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"/home/vladimir/workspace/inform-and-connect/functions/node_modules/firebase-functions/lib/index.js"} 
+[debug] [2020-04-04T21:53:27.572Z] [runtime-status] [24446] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"/home/vladimir/workspace/inform-and-connect/functions/node_modules/firebase-admin/lib/index.js"}} 
+[debug] [2020-04-04T21:53:27.595Z] [runtime-status] [24446] initializeApp(DEFAULT) {"databaseURL":"https://inform-and-connect.firebaseio.com","storageBucket":"inform-and-connect.appspot.com","projectId":"inform-and-connect"} 
+[warn] ⚠  TypeError: require(...) is not a function
+    at Object.<anonymous> (/home/vladimir/workspace/inform-and-connect/functions/index.js:5:53)
+    at Module._compile (internal/modules/cjs/loader.js:1147:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1167:10)
+    at Module.load (internal/modules/cjs/loader.js:996:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:896:14)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at /usr/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:656:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/usr/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:5:58)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2020-04-04T21:53:27.787Z] [worker-~diagnostic~-7b470900-b6d5-43c6-a6be-2ca735f884c9]: exited 
+[debug] [2020-04-04T21:53:27.787Z] [worker-~diagnostic~-7b470900-b6d5-43c6-a6be-2ca735f884c9]: FINISHED 

@@ -4,11 +4,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "../Navigation";
 import LandingPage from "../Landing";
 import HomePage from "../Home";
+import Article from "../Article";
 
 import firebase from "firebase";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-
 async function getLanguages(params) {
   firebase
     .database()
@@ -37,10 +37,62 @@ class App extends Component {
       { id: 2, name: "Getting Money" },
       { id: 3, name: "Other things" },
     ],
+    articles: [
+      {
+        id: 0,
+        title: "Media Heading",
+        posted: "4 jul. 2020",
+        sourceName: "Upsalla kommun",
+        url: "https://www.uppsala.se/",
+        imgUrl: "https://picsum.photos/200",
+        fullVersion:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        summary:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        id: 1,
+        title: "Media Heading",
+        posted: "4 jul. 2020",
+        sourceName: "Upsalla kommun",
+        url: "https://www.uppsala.se/",
+        imgUrl: "https://picsum.photos/200",
+        fullVersion:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        summary:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        id: 2,
+        title: "Media Heading",
+        posted: "4 jul. 2020",
+        sourceName: "Upsalla kommun",
+        url: "https://www.uppsala.se/",
+        imgUrl: "https://picsum.photos/200",
+        fullVersion:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        summary:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        id: 3,
+        title: "Media Heading",
+        posted: "4 jul. 2020",
+        sourceName: "Upsalla kommun",
+        url: "https://www.uppsala.se/",
+        imgUrl: "https://picsum.photos/200",
+        fullVersion:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        summary:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+    ],
     currentLanguage: { id: 0, name: "Russian" },
     // currentLanguage: null,
     currentKommun: { id: 0, name: "Stockholm" },
     currentTopic: { id: 0, name: "COVID-19" },
+    currentArticle: null,
+    // currentArticle: null,
     // currentPage: "home",
     currentPage: "landing",
     allertVisible: false,
@@ -63,6 +115,9 @@ class App extends Component {
       this.onShowAlert();
     }
   };
+  setArticle = (article) => {
+    this.setState({ currentArticle: article });
+  };
   onShowAlert = () => {
     this.setState({ allertVisible: true }, () => {
       window.setTimeout(() => {
@@ -71,6 +126,10 @@ class App extends Component {
     });
   };
   pageToRender() {
+    if (this.state.currentArticle) {
+      return <Article {...this.state} setArticle={this.setArticle} />;
+    }
+
     if (this.state.currentPage === "home") {
       return (
         <HomePage
@@ -78,17 +137,21 @@ class App extends Component {
           setKommun={this.setKommun}
           setLanguage={this.setLanguage}
           setTopic={this.setTopic}
+          setArticle={this.setArticle}
+        />
+      );
+    } else if (this.state.currentPage === "landing") {
+      return (
+        <LandingPage
+          {...this.state}
+          setKommun={this.setKommun}
+          setLanguage={this.setLanguage}
+          setTopic={this.setTopic}
+          setArticle={this.setArticle}
         />
       );
     }
-    return (
-      <LandingPage
-        {...this.state}
-        setKommun={this.setKommun}
-        setLanguage={this.setLanguage}
-        setTopic={this.setTopic}
-      />
-    );
+    return <h1>SOMEHING IS WRONG IN ROUTING</h1>;
   }
 
   render() {
