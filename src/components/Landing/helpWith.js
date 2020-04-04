@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -11,47 +12,30 @@ class HelpWith extends Component {
     return (
       <div>
         <h4>
-          <FontAwesomeIcon
-            icon={faQuestionCircle}
-            className="mr-2"
-            color="green"
-          />
-          I need help with:
+          <FontAwesomeIcon icon={faQuestionCircle} className="mr-2" />I need
+          help with:
         </h4>
-        <Row md={4} className="mb-3">
-          <Col>
-            <Button variant="primary" className="btn-block">
-              COVID-19
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="primary" className="btn-block">
-              Getting money
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="primary" className="btn-block">
-              Finding Job
-            </Button>
-          </Col>
-        </Row>
-        <Row md={4} className="mb">
-          {/* <Col>
-              <Button variant="primary" className="btn-block">
-                Something else
-              </Button>
-            </Col> */}
-          <Col>
-            <Button variant="primary" className="btn-block">
-              Other things
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="primary" className="btn-block">
-              More Things
-            </Button>
-          </Col>
-        </Row>
+        <Container fluid>
+          <Row
+            lg={this.props.topics.length > 5 ? 5 : this.props.topics.length}
+            md={3}
+            xs={1}
+          >
+            {this.props.topics.map((topic) => (
+              <Col key={topic.id} className="mb-3">
+                <Button
+                  onClick={() => {
+                    this.props.setTopic(topic);
+                  }}
+                  variant="primary"
+                  className="btn-block"
+                >
+                  {topic.name}
+                </Button>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
     );
   }

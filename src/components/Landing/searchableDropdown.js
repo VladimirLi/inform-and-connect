@@ -54,13 +54,13 @@ function SearchableDropdown(props) {
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-        {props.title}
+        {props.currentItem ? props.currentItem.name : props.title}
       </Dropdown.Toggle>
 
       <Dropdown.Menu as={CustomMenu}>
         {props.items.map((item) => (
-          <Dropdown.Item key={item.id} href="#/action-1">
-            {item.name}
+          <Dropdown.Item key={item.id}>
+            <div onClick={() => props.setItem(item)}>{item.name}</div>
           </Dropdown.Item>
         ))}
       </Dropdown.Menu>
