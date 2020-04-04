@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import UsefulContacts from "./usefulContacts";
 import NewsFeed from "../NewsFeed";
+import PreferenceMenu from "../Landing/preferenceMenu";
 
 class Home extends Component {
   state = {
@@ -17,8 +18,9 @@ class Home extends Component {
     return (
       <Container>
         <Container className="mb-5">
-          Here are results for: {props.currentLanguage.name},{" "}
-          {props.currentKommun.name}, {props.currentTopic.name}
+          <PreferenceMenu {...props} renderTopics={true} />
+          {/* Here are results for: {props.currentLanguage.name},{" "}
+          {props.currentKommun.name}, {props.currentTopic.name} */}
         </Container>
         <Row>
           <Col sm={8}>
@@ -28,6 +30,10 @@ class Home extends Component {
             <UsefulContacts contacts={this.state.contacts} />
           </Col>
         </Row>
+        <p>
+          {props.currentLanguage.name}, {props.currentKommun.name},{" "}
+          {props.currentTopic.name}
+        </p>
       </Container>
     );
   }

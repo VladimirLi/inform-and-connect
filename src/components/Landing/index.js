@@ -7,7 +7,7 @@ import NewsFeed from "../NewsFeed";
 function Landing(props) {
   return (
     <Container>
-      <PreferenceMenu {...props} />
+      <PreferenceMenu {...props} renderTopic={false} />
       <HelpWith {...props} />
       <hr />
       <NewsFeed title="Breaking News:" />
