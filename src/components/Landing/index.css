@@ -1,0 +1,7 @@
+.flagContainer {
+  margin: 10px 10px;
+  border: 2px solid black;
+}
+.flag {
+  border-radius: 300px;
+}

@@ -1,0 +1,9 @@
+.collapse:not(.show) {
+  display: block;
+  height: 4.5rem;
+  overflow: hidden;
+}
+
+/* #module #collapseExample.collapsing {
+    height: 3rem;
+  } */
