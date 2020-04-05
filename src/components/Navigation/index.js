@@ -7,6 +7,8 @@ import { UIElementIfExists } from "../utils";
 import { faLink, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FontAwesome from "react-fontawesome";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import FormControl from "react-bootstrap/FormControl";
 
 const Navigation = (props) => (
   <Navbar bg="light" expand="lg">
@@ -19,27 +21,18 @@ const Navigation = (props) => (
       Inform and {/* <FontAwesomeIcon icon={faLink} className="mr-2 ml-2" /> */}
       Connect
     </Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
+    {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+    <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto"></Nav>
-      <Form inline>
-        {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-success" className="mr-5">
-          Search
-        </Button> */}
-        <Button className="m-sm-2">
-          {UIElementIfExists(
-            props.UIElements.login,
-            props.currentLanguage.code
-          )}
-        </Button>
-        <Button className="m-sm-2">
-          {UIElementIfExists(
-            props.UIElements.register,
-            props.currentLanguage.code
-          )}
-        </Button>
-      </Form>
+      <Nav.Link href="#">
+        {UIElementIfExists(props.UIElements.login, props.currentLanguage.code)}
+      </Nav.Link>
+      <Nav.Link>
+        {UIElementIfExists(
+          props.UIElements.register,
+          props.currentLanguage.code
+        )}
+      </Nav.Link>
     </Navbar.Collapse>
   </Navbar>
 );
