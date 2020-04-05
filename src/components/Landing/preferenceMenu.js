@@ -8,15 +8,21 @@ import {
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UIElementIfExists } from "../utils";
+
 function renderLanguage(props) {
   return (
     <Col>
       <FontAwesomeIcon icon={faLanguage} className="mr-2" />
-      My language:
+      {UIElementIfExists(
+        props.UIElements.myLanguage,
+        props.currentLanguage.code
+      )}
       <SearchableDropdown
         title="Language"
         items={props.languages}
         currentItem={props.currentLanguage}
+        currentLanguage={props.currentLanguage}
         setItem={props.setLanguage}
       />
     </Col>
@@ -27,11 +33,15 @@ function renderKommun(props) {
   return (
     <Col>
       <FontAwesomeIcon icon={faMapMarkedAlt} className="mr-2" />
-      My kommun:
+      {UIElementIfExists(
+        props.UIElements.myMunicipality,
+        props.currentLanguage.code
+      )}
       <SearchableDropdown
         title="Kommun"
         items={props.kommuns}
         currentItem={props.currentKommun}
+        currentLanguage={props.currentLanguage}
         setItem={props.setKommun}
       />
     </Col>
@@ -39,14 +49,16 @@ function renderKommun(props) {
 }
 
 function renderTopics(props) {
+  console.log(props.UIElements.topic);
   return (
     <Col>
       <FontAwesomeIcon icon={faQuestionCircle} className="mr-2" />
-      Topic:
+      {UIElementIfExists(props.UIElements.topic, props.currentLanguage.code)}
       <SearchableDropdown
         title="Topic"
         items={props.topics}
         currentItem={props.currentTopic}
+        currentLanguage={props.currentLanguage}
         setItem={props.setTopic}
       />
     </Col>

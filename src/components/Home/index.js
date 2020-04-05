@@ -5,6 +5,17 @@ import Col from "react-bootstrap/Col";
 import UsefulContacts from "./usefulContacts";
 import NewsFeed from "../NewsFeed";
 import PreferenceMenu from "../Landing/preferenceMenu";
+import { UIElementIfExists } from "../utils";
+
+function getNames(item, language) {
+  if (typeof item.name === "string") {
+    return item.name;
+  } else {
+    const lc = language.code;
+    const name = lc in item.name ? item.name[lc] : item.name["en"];
+    return name;
+  }
+}
 
 class Home extends Component {
   state = {
@@ -24,15 +35,21 @@ class Home extends Component {
         </Container>
         <Row>
           <Col sm={8}>
-            <NewsFeed title="News and Updates" {...props} />
+            <NewsFeed
+              title={UIElementIfExists(
+                props.UIElements.newsAndUpdates,
+                props.currentLanguage.code
+              )}
+              {...props}
+            />
           </Col>
           <Col sm={4}>
-            <UsefulContacts contacts={this.state.contacts} />
+            <UsefulContacts {...props} contacts={this.state.contacts} />
           </Col>
         </Row>
         <p>
           {props.currentLanguage.name}, {props.currentKommun.name},{" "}
-          {props.currentTopic.name}
+          {getNames(props.currentTopic, props.currentLanguage)}
         </p>
       </Container>
     );

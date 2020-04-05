@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import Article from "./article";
 import Container from "react-bootstrap/Container";
+import reactCSS from "reactcss";
+
+const cardStyle = reactCSS({
+  default: {
+    button: {
+      background: "#999",
+    },
+  },
+  hover: {
+    cursor: "pointer",
+  },
+});
 
 class NewsFeed extends Component {
   state = {};
@@ -17,7 +29,7 @@ class NewsFeed extends Component {
               onClick={() => this.props.setArticle(article)}
               className="mb-3"
             >
-              <Article article={article} />
+              <Article article={article} style={cardStyle} />
             </div>
           );
         })}

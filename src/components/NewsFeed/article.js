@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import Media from "react-bootstrap/Media";
 import { style } from "./index.css";
 
+const imgStyle = {
+  width: "100px",
+  height: "100px",
+  objectFit: "cover",
+};
+
 class Article extends Component {
   state = {};
   render() {
@@ -11,7 +17,8 @@ class Article extends Component {
         <img
           width={100}
           height={100}
-          className="mr-3"
+          style={imgStyle}
+          className="rounded float-left img-thumnail mr-4"
           src={article.imgUrl}
           alt=""
         />

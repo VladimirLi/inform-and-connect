@@ -14,23 +14,105 @@ class App extends Component {
   state = {
     languages: [],
     articles: [],
-    currentLanguage: { name: "Swedish", code: "sv" },
     kommuns: [
       { id: 0, name: "stockholm" },
       { id: 1, name: "uppsala" },
     ],
     topics: [
-      { id: 0, name: "COVID-19" },
-      { id: 1, name: "Finding Job" },
-      { id: 2, name: "Getting Money" },
-      { id: 3, name: "Other things" },
+      {
+        id: 0,
+        name: {
+          en: "COVID-19",
+          sv: "COVID-19",
+          ru: "COVID-19",
+        },
+      },
+      {
+        id: 1,
+        name: {
+          en: "Getting a job",
+          ru: "Найти работу",
+          sv: "Hitta jobb",
+        },
+      },
+      {
+        id: 2,
+        name: {
+          en: "Getting money",
+          ru: "Финансовая поддержка",
+          sv: "Få pengar",
+        },
+      },
+      {
+        id: 3,
+        name: {
+          en: "Оther things",
+          ru: "Другое",
+          sv: "Övrig information",
+        },
+      },
     ],
-    // currentLanguage: null,
-    currentKommun: { id: 0, name: "Stockholm" },
+    UIElements: {
+      myLanguage: {
+        en: "My language",
+        sv: "Mitt språk",
+        ru: "Язык",
+      },
+      myMunicipality: {
+        en: "My municipality",
+        ru: "Муниципалитет",
+        sv: "Min kommun",
+      },
+      topic: {
+        en: "Topic",
+        ru: "Тема",
+        sv: "Ämne",
+      },
+      newsAndUpdates: {
+        en: "News and Updates",
+        ru: "Последние новости",
+        sv: "Nyheter och uppdateringar",
+      },
+      login: {
+        en: "Login",
+        ru: "Войти",
+        sv: "Logga in",
+      },
+      register: {
+        en: "Register",
+        ru: "Зарегистрироваться",
+        sv: "Registrera",
+      },
+      usefulContact: {
+        en: "Useful Contacts",
+        ru: "Важные контакты",
+        sv: "Användbara kontakter",
+      },
+      fullVersion: {
+        en: "Full Version",
+        ru: "Полная версия",
+        sv: "Hela Version",
+      },
+      summary: {
+        en: "Summary",
+        ru: "Кратко",
+        sv: "Summa",
+      },
+      backToResults: {
+        en: "Back to results",
+        ru: "Oбратно",
+        sv: "Tillbaka till resultatet",
+      },
+      iNeedHelp: {
+        en: "I need help with",
+        ru: "Мне нужна помощь",
+        sv: "Jag behöver hjälp med",
+      },
+    },
+    currentLanguage: { name: "Swedish", code: "sv" },
+    currentKommun: { id: 0, name: "stockholm" },
     currentTopic: { id: 0, name: "COVID-19" },
     currentArticle: null,
-    // currentArticle: null,
-    // currentPage: "home",
     currentPage: "landing",
     allertVisible: false,
   };
@@ -130,11 +212,21 @@ class App extends Component {
     }
     return <h1>SOMEHING IS WRONG IN ROUTING</h1>;
   }
+  resetState = () => {
+    this.setState({
+      currentLanguage: { name: "Swedish", code: "sv" },
+      currentKommun: { id: 0, name: "stockholm" },
+      currentTopic: { id: 0, name: "COVID-19" },
+      currentArticle: null,
+      currentPage: "landing",
+      allertVisible: false,
+    });
+  };
 
   render() {
     return (
       <Router>
-        <Navigation />
+        <Navigation {...this.state} resetState={this.resetState} />
         <Alert variant="info" show={this.state.allertVisible}>
           {" "}
           Make sure to choose Language and Kommun

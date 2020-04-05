@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { UIElementIfExists } from "../utils";
 
 class UsefulContacts extends Component {
   state = {};
@@ -6,7 +7,12 @@ class UsefulContacts extends Component {
     if (this.props.contacts) {
       return (
         <div className="ml-5">
-          <h3 className="mb-5">Useful Contacts</h3>
+          <h3 className="mb-5">
+            {UIElementIfExists(
+              this.props.UIElements.usefulContact,
+              this.props.currentLanguage.code
+            )}
+          </h3>
           {this.props.contacts.map((contact) => (
             <div key={contact.id} className="mb-5">
               <h5>{contact.number}</h5>

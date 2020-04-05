@@ -33,6 +33,12 @@ exports.getArticles = functions.https.onRequest(async (req, res) => {
         });
         article.fullVersion = fullTranslated[0];
 
+        const summaryTranslated = await translate.translate(article.summary, {
+          from: "sv",
+          to: language,
+        });
+        article.summary = summaryTranslated[0];
+
         const titleTranslated = await translate.translate(article.title, {
           from: "sv",
           to: language,

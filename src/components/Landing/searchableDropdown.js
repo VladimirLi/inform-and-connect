@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
 
+function capitalizeFLetter(string) {
+  return string[0].toUpperCase() + string.slice(1);
+}
+
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
 
@@ -50,17 +54,31 @@ const CustomMenu = React.forwardRef(
   }
 );
 
+function getNames(item, language) {
+  if (typeof item.name === "string") {
+    return capitalizeFLetter(item.name);
+  } else {
+    const lc = language.code;
+    const name = lc in item.name ? item.name[lc] : item.name["en"];
+    return name;
+  }
+}
+
 function SearchableDropdown(props) {
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-        {props.currentItem ? props.currentItem.name : props.title}
+        {props.currentItem
+          ? getNames(props.currentItem, props.currentLanguage)
+          : props.title}
       </Dropdown.Toggle>
 
       <Dropdown.Menu as={CustomMenu}>
         {props.items.map((item) => (
           <Dropdown.Item key={item.name}>
-            <div onClick={() => props.setItem(item)}>{item.name}</div>
+            <div onClick={() => props.setItem(item)}>
+              {getNames(item, props.currentLanguage)}
+            </div>
           </Dropdown.Item>
         ))}
       </Dropdown.Menu>
