@@ -13,7 +13,7 @@ UX design made by [Maija Perfiljeva](github.com/mperfiljeva), see UX workspace [
 - Venkata Sai Teja Mogillapalle: Technical support, [github.com/sai36](github.com/sai36)
 - Vladimir Li: Full-stack development and integration, [github.com/VladimirLi](github.com/VladimirLi)
 
-## Link and QR code to current instance below:
+## Link and QR code to current instance:
 
 ![QR code](inform-and-connect.png)
 
