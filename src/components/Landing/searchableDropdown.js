@@ -40,10 +40,10 @@ const CustomMenu = React.forwardRef(
           value={value}
         />
         <ul className="list-unstyled">
-          {React.Children.toArray(children).filter(
-            (child) =>
-              !value || child.props.children.toLowerCase().startsWith(value)
-          )}
+          {React.Children.toArray(children).filter((child) => {
+            let name = child.props.children.props.children;
+            return !value || name.toLowerCase().startsWith(value);
+          })}
         </ul>
       </div>
     );
@@ -51,7 +51,6 @@ const CustomMenu = React.forwardRef(
 );
 
 function SearchableDropdown(props) {
-  console.log(props);
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
