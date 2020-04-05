@@ -8,10 +8,10 @@ UX design by [Maija Perfiljeva](github.com/mperfiljeva), see UX workspace [here]
 
 ## Team members:
 
-- Maija Perfiljeva: UX and UI design, [github.com/mperfiljeva](github.com/mperfiljeva)
+- Maija Perfiljeva: UX and UI design, [github.com/mperfiljeva](mperfiljeva)
 - Ying Cheng: Team managment, www.arkus.ai
-- Venkata Sai Teja Mogillapalle: Technical support, [github.com/sai36](github.com/sai36)
-- Vladimir Li: Full-stack development and integration, [github.com/VladimirLi](github.com/VladimirLi)
+- Venkata Sai Teja Mogillapalle: Technical support, [github.com/sai36](www.github.com/sai36)
+- Vladimir Li: Full-stack development and integration, [github.com/VladimirLi](www.github.com/VladimirLi)
 
 ## Link and QR code to current instance:
 
