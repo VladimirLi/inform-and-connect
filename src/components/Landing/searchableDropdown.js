@@ -51,6 +51,7 @@ const CustomMenu = React.forwardRef(
 );
 
 function SearchableDropdown(props) {
+  console.log(props);
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
@@ -59,7 +60,7 @@ function SearchableDropdown(props) {
 
       <Dropdown.Menu as={CustomMenu}>
         {props.items.map((item) => (
-          <Dropdown.Item key={item.id}>
+          <Dropdown.Item key={item.name}>
             <div onClick={() => props.setItem(item)}>{item.name}</div>
           </Dropdown.Item>
         ))}

@@ -9,24 +9,12 @@ import Article from "../Article";
 import firebase from "firebase";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-async function getLanguages(params) {
-  firebase
-    .database()
-    .ref("languages")
-    .once("value")
-    .then((snapshot) => console.log(snapshot));
-}
 
 class App extends Component {
-  constructor() {
-    super();
-    getLanguages();
-  }
   state = {
-    languages: [
-      { id: 0, name: "Russian", ISOCode: "ru" },
-      { id: 1, name: "English", ISOCode: "en" },
-    ],
+    languages: [],
+    articles: [],
+    currentLanguage: { name: "Swedish", code: "sv" },
     kommuns: [
       { id: 0, name: "stockholm" },
       { id: 1, name: "uppsala" },
@@ -37,8 +25,6 @@ class App extends Component {
       { id: 2, name: "Getting Money" },
       { id: 3, name: "Other things" },
     ],
-    articles: [],
-    currentLanguage: { id: 0, name: "Russian", ISOCode: "ru" },
     // currentLanguage: null,
     currentKommun: { id: 0, name: "Stockholm" },
     currentTopic: { id: 0, name: "COVID-19" },
@@ -53,7 +39,7 @@ class App extends Component {
     let url =
       "https://us-central1-inform-and-connect.cloudfunctions.net/getArticles?";
     if (language !== null) {
-      url += `language=${language.ISOCode}&`;
+      url += `language=${language.code}&`;
     }
     if (this.currentKommun !== null) {
       url += `kommun=${kommun.name.toLocaleLowerCase()}`;
@@ -66,19 +52,20 @@ class App extends Component {
     console.log(articles);
     return articles;
   };
-  // getLanguages = () => {
-  //     let url =
-  //       "https://us-central1-inform-and-connect.cloudfunctions.net/getSupportedLanguages";
-  //     const languages =
-
-  // }
+  getLanguages = () => {
+    let url =
+      "https://us-central1-inform-and-connect.cloudfunctions.net/getSupportedLanguages";
+    const languages = fetch(url).then((response) => response.json());
+    return languages;
+  };
 
   async componentDidMount() {
     const articles = await this.getNewArticles(
       this.state.currentLanguage,
       this.state.currentKommun
     );
-    this.setState({ articles: articles });
+    const languages = await this.getLanguages();
+    this.setState({ articles: articles, languages: languages });
   }
 
   setLanguage = async (language) => {
