@@ -17,4 +17,4 @@ UX design by [Maija Perfiljeva](github.com/mperfiljeva), see UX workspace [here]
 
 ![QR code](inform-and-connect.png)
 
-[inform-and-connect.web.app](inform-and-connect.web.app)
+[inform-and-connect.web.app](https://inform-and-connect.web.app)
