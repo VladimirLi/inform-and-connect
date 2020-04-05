@@ -24,12 +24,12 @@ class App extends Component {
   }
   state = {
     languages: [
-      { id: 0, name: "Russian" },
-      { id: 1, name: "English" },
+      { id: 0, name: "Russian", ISOCode: "ru" },
+      { id: 1, name: "English", ISOCode: "en" },
     ],
     kommuns: [
-      { id: 0, name: "Stockholm" },
-      { id: 1, name: "Uppsalla" },
+      { id: 0, name: "stockholm" },
+      { id: 1, name: "uppsala" },
     ],
     topics: [
       { id: 0, name: "COVID-19" },
@@ -37,57 +37,8 @@ class App extends Component {
       { id: 2, name: "Getting Money" },
       { id: 3, name: "Other things" },
     ],
-    articles: [
-      {
-        id: 0,
-        title: "Media Heading",
-        posted: "4 jul. 2020",
-        sourceName: "Upsalla kommun",
-        url: "https://www.uppsala.se/",
-        imgUrl: "https://picsum.photos/200",
-        fullVersion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 1,
-        title: "Media Heading",
-        posted: "4 jul. 2020",
-        sourceName: "Upsalla kommun",
-        url: "https://www.uppsala.se/",
-        imgUrl: "https://picsum.photos/200",
-        fullVersion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 2,
-        title: "Media Heading",
-        posted: "4 jul. 2020",
-        sourceName: "Upsalla kommun",
-        url: "https://www.uppsala.se/",
-        imgUrl: "https://picsum.photos/200",
-        fullVersion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 3,
-        title: "Media Heading",
-        posted: "4 jul. 2020",
-        sourceName: "Upsalla kommun",
-        url: "https://www.uppsala.se/",
-        imgUrl: "https://picsum.photos/200",
-        fullVersion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-    ],
-    currentLanguage: { id: 0, name: "Russian" },
+    articles: [],
+    currentLanguage: { id: 0, name: "Russian", ISOCode: "ru" },
     // currentLanguage: null,
     currentKommun: { id: 0, name: "Stockholm" },
     currentTopic: { id: 0, name: "COVID-19" },
@@ -97,13 +48,52 @@ class App extends Component {
     currentPage: "landing",
     allertVisible: false,
   };
-  setLanguage = (language) => {
-    this.setState({ currentLanguage: language });
-    console.log(language);
+  getNewArticles = (language, kommun) => {
+    // Simple GET request using fetch
+    let url =
+      "https://us-central1-inform-and-connect.cloudfunctions.net/getArticles?";
+    if (language !== null) {
+      url += `language=${language.ISOCode}&`;
+    }
+    if (this.currentKommun !== null) {
+      url += `kommun=${kommun.name.toLocaleLowerCase()}`;
+    }
+    const articles = fetch(url).then((response) => response.json());
+    // .then((data) => {
+    //   this.setState({ articles: data });
+    //   console.log("Done");
+    // });
+    console.log(articles);
+    return articles;
   };
-  setKommun = (kommun) => {
-    this.setState({ currentKommun: kommun });
-    console.log(kommun);
+  // getLanguages = () => {
+  //     let url =
+  //       "https://us-central1-inform-and-connect.cloudfunctions.net/getSupportedLanguages";
+  //     const languages =
+
+  // }
+
+  async componentDidMount() {
+    const articles = await this.getNewArticles(
+      this.state.currentLanguage,
+      this.state.currentKommun
+    );
+    this.setState({ articles: articles });
+  }
+
+  setLanguage = async (language) => {
+    const articles = await this.getNewArticles(
+      language,
+      this.state.currentKommun
+    );
+    this.setState({ currentLanguage: language, articles: articles });
+  };
+  setKommun = async (kommun) => {
+    const articles = await this.getNewArticles(
+      this.state.currentLanguage,
+      kommun
+    );
+    this.setState({ currentKommun: kommun, articles: articles });
   };
   setTopic = (topic) => {
     this.setState({ currentTopic: topic });
