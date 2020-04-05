@@ -4,6 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import { UIElementIfExists } from "../utils";
+import { faLink, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FontAwesome from "react-fontawesome";
 
 const Navigation = (props) => (
   <Navbar bg="light" expand="lg">
@@ -12,7 +15,9 @@ const Navigation = (props) => (
         props.resetState();
       }}
     >
-      Inform and Connect
+      <FontAwesomeIcon icon={faInfoCircle} className="mr-2" />
+      Inform and {/* <FontAwesomeIcon icon={faLink} className="mr-2 ml-2" /> */}
+      Connect
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
