@@ -18,3 +18,5 @@ UX design by [Maija Perfiljeva](https://github.com/mperfiljeva), see UX workspac
 ![QR code](inform-and-connect.png)
 
 [inform-and-connect.web.app](https://inform-and-connect.web.app)
+
+[#8 in Save community digital challenge](https://www.guaana.com/challenges/PtcJCi8E7rhiW6GrD/results/er3wYvEj4d5L6bszi)
