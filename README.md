@@ -1,10 +1,9 @@
 # Inform and Connect
+Inform and connect is a simple web site where important information from multiple governmental institutions is gathered. The information is further translated into the language of choice so that even people that do not speak Swedish are well informed.
 
-Inform and connect is a simple web site where important information from multiple govermental institutions is gathered. The information is further translated into the language of choise so that even people that do not speak Sweidish are well imformed.
+Inform and Connect was born as a part of [hackTheCrisis](https://www.hackthecrisis.se/) hackathon (3-5 of April 2020)
 
-Inform and Connect was born as a part of [hackTheCrisis](https://www.hackthecrisis.se/) hackathon (3-5 of Arpril 2020)
-
-UX design by [Maija Perfiljeva](https://github.com/mperfiljeva), see UX workspace [here](https://whimsical.com/SbvkKwSRyFnfmW6SM31Zu6) and final desing [here](https://www.figma.com/file/ZISP92E0mYkAtkAB7f6tkm/Connect-and-inform?node-id=0%3A1).
+UX design by [Maija Perfiljeva](https://github.com/mperfiljeva), [here](https://whimsical.com/SbvkKwSRyFnfmW6SM31Zu6) and final desing [here](https://www.figma.com/file/ZISP92E0mYkAtkAB7f6tkm/Connect-and-inform?node-id=0%3A1).
 
 ## Team members:
 
