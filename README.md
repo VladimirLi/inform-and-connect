@@ -12,10 +12,4 @@ UX design by [Maija Perfiljeva](https://github.com/mperfiljeva), [here](https://
 - Venkata Sai Teja Mogillapalle: Technical support, [github.com/sai36](https://www.github.com/sai36)
 - Vladimir Li: Full-stack development and integration, [github.com/VladimirLi](https://www.github.com/VladimirLi)
 
-## Link and QR code to current instance:
-
-![QR code](inform-and-connect.png)
-
-[inform-and-connect.web.app](https://inform-and-connect.web.app)
-
 [#8 in Save community digital challenge](https://www.guaana.com/challenges/PtcJCi8E7rhiW6GrD/results/er3wYvEj4d5L6bszi)
